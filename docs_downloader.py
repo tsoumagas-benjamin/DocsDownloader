@@ -70,9 +70,12 @@ def order_media(inline_objects: dict):
 
   # Iterate over each object and store it in a dict
   for inline_object in inline_objects:
-    object_id = inline_objects[inline_object]['objectId']
-    content_uri = inline_objects[inline_object]['inlineObjectProperties']['embeddedObject']['imageProperties']['contentUri']
-    media_dict[object_id] = content_uri
+    try:
+      object_id = inline_objects[inline_object]['objectId']
+      content_uri = inline_objects[inline_object]['inlineObjectProperties']['embeddedObject']['imageProperties']['contentUri']
+      media_dict[object_id] = content_uri
+    except:
+      pass
 
   return media_dict
 
